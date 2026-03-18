@@ -1,0 +1,464 @@
+/* ===================================================
+   WEDDING PAGE — STYLE SYSTEM
+   Gold / Champagne / Ivory / Charcoal palette
+   Fonts: Playfair Display (headings), Lato (body)
+   =================================================== */
+
+/* ---------- Custom Properties ---------- */
+:root {
+  /* Colours */
+  --gold:           #c9a84c;
+  --gold-light:     #e2cc8a;
+  --gold-glow:      rgba(201, 168, 76, 0.35);
+  --champagne:      #f7f0e3;
+  --ivory:          #fffdf7;
+  --charcoal:       #2b2b2b;
+  --charcoal-light: #3d3d3d;
+  --text-body:      #4a4540;
+  --text-muted:     #8a8279;
+  --overlay:        rgba(43, 43, 43, 0.55);
+  --glass-bg:       rgba(255, 253, 247, 0.72);
+  --glass-border:   rgba(201, 168, 76, 0.25);
+
+  /* Typography */
+  --font-display: 'Playfair Display', 'Georgia', serif;
+  --font-body:    'Lato', 'Segoe UI', sans-serif;
+
+  /* Spacing */
+  --section-gap: 5rem;
+  --container-max: 800px;
+
+  /* Transitions */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ---------- Reset & Base ---------- */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--text-body);
+  background: var(--champagne);
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+a   { color: var(--gold); text-decoration: none; }
+
+/* ---------- Utilities ---------- */
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ---------- Decorative ornament ---------- */
+.ornament {
+  display: block;
+  text-align: center;
+  font-size: 1.6rem;
+  color: var(--gold);
+  margin: 2rem auto;
+  letter-spacing: 0.6em;
+  user-select: none;
+  opacity: 0.7;
+}
+
+/* ---------- HERO SECTION ---------- */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  filter: brightness(0.65) saturate(0.9);
+  z-index: 0;
+}
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(43,43,43,0.15) 0%,
+    rgba(43,43,43,0.55) 70%,
+    rgba(43,43,43,0.85) 100%
+  );
+  z-index: 1;
+}
+
+.hero__content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #fff;
+  padding: 2rem;
+}
+
+.hero__names {
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 7vw, 5rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  line-height: 1.2;
+  text-shadow: 0 2px 30px rgba(0,0,0,0.35);
+}
+
+.hero__ampersand {
+  display: block;
+  font-size: 0.45em;
+  color: var(--gold-light);
+  margin: 0.15em 0;
+  font-style: italic;
+}
+
+.hero__date {
+  margin-top: 1.2rem;
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 2.5vw, 1.35rem);
+  font-weight: 300;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  text-shadow: 0 1px 12px rgba(0,0,0,0.3);
+}
+
+.hero__scroll {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  color: rgba(255,255,255,0.7);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  animation: bounce 2s infinite;
+}
+
+.hero__scroll svg {
+  width: 20px;
+  height: 20px;
+  stroke: rgba(255,255,255,0.7);
+  stroke-width: 2;
+  fill: none;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%      { transform: translateX(-50%) translateY(8px); }
+}
+
+/* ---------- SECTION (agenda item) ---------- */
+.section {
+  padding: var(--section-gap) 0;
+  position: relative;
+}
+
+.section--alt {
+  background: var(--ivory);
+}
+
+.section__card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 1.2rem;
+  padding: 3rem 2.5rem;
+  box-shadow: 0 8px 40px rgba(201, 168, 76, 0.08),
+              0 1.5px 6px rgba(0,0,0,0.04);
+  transition: transform 0.4s var(--ease-out), box-shadow 0.4s var(--ease-out);
+}
+
+.section__card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 50px rgba(201, 168, 76, 0.14),
+              0 2px 8px rgba(0,0,0,0.06);
+}
+
+.section__icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.6rem;
+  display: block;
+}
+
+.section__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  color: var(--charcoal);
+  margin-bottom: 0.3rem;
+  font-weight: 700;
+}
+
+.section__subtitle {
+  font-size: 0.95rem;
+  color: var(--gold);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 1.4rem;
+}
+
+.section__text {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--text-body);
+  margin-bottom: 1rem;
+}
+
+.section__text:last-child {
+  margin-bottom: 0;
+}
+
+.section__photo {
+  width: 100%;
+  border-radius: 0.8rem;
+  margin: 1.8rem 0;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+  transition: transform 0.5s var(--ease-out);
+}
+
+.section__photo:hover {
+  transform: scale(1.015);
+}
+
+/* Detail list (time, place, etc.) */
+.detail-list {
+  list-style: none;
+  margin: 1.2rem 0;
+  padding: 0;
+}
+
+.detail-list li {
+  position: relative;
+  padding: 0.5rem 0 0.5rem 2rem;
+  font-size: 1.05rem;
+}
+
+.detail-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  background: var(--gold);
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px var(--gold-glow);
+}
+
+/* ---------- PASSWORD GATE ---------- */
+.password-gate {
+  padding: 4rem 0;
+  text-align: center;
+  position: relative;
+}
+
+.password-gate::before,
+.password-gate::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  max-width: 400px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--gold) 50%,
+    transparent 100%
+  );
+}
+
+.password-gate::before { top: 0; }
+.password-gate::after  { bottom: 0; }
+
+.password-gate__title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--charcoal);
+  margin-bottom: 0.5rem;
+}
+
+.password-gate__hint {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.password-gate__form {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 460px;
+  margin: 0 auto;
+}
+
+.password-gate__input {
+  flex: 1;
+  min-width: 200px;
+  padding: 0.85rem 1.2rem;
+  border: 1.5px solid var(--glass-border);
+  border-radius: 0.6rem;
+  background: var(--ivory);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--charcoal);
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.password-gate__input:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px var(--gold-glow);
+}
+
+.password-gate__btn {
+  padding: 0.85rem 2rem;
+  border: none;
+  border-radius: 0.6rem;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.3s;
+  box-shadow: 0 4px 16px var(--gold-glow);
+}
+
+.password-gate__btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px var(--gold-glow);
+}
+
+.password-gate__btn:active {
+  transform: translateY(0);
+}
+
+.password-gate__error {
+  display: none;
+  margin-top: 0.8rem;
+  font-size: 0.9rem;
+  color: #c0392b;
+}
+
+.password-gate__error.visible {
+  display: block;
+  animation: shake 0.4s;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25%      { transform: translateX(-6px); }
+  75%      { transform: translateX(6px); }
+}
+
+/* ---------- PRIVATE SECTIONS ---------- */
+.private-section {
+  display: none;
+}
+
+.private-section.unlocked {
+  display: block;
+  animation: fadeSlideIn 0.8s var(--ease-out) both;
+}
+
+/* ---------- SCROLL ANIMATIONS ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- FOOTER ---------- */
+.footer {
+  text-align: center;
+  padding: 4rem 1.5rem 3rem;
+  background: var(--charcoal);
+  color: rgba(255,255,255,0.6);
+  font-size: 0.9rem;
+}
+
+.footer__heart {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 0.6rem;
+  color: var(--gold);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.footer__text {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 0.4rem;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.15); }
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 600px) {
+  .section__card {
+    padding: 2rem 1.4rem;
+    border-radius: 0.9rem;
+  }
+
+  .hero {
+    min-height: 500px;
+  }
+
+  .password-gate__form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .password-gate__btn {
+    width: 100%;
+  }
+
+  .detail-list li {
+    font-size: 0.95rem;
+  }
+}
