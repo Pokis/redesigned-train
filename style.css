@@ -25,7 +25,7 @@
   --font-body:    'Lato', 'Segoe UI', sans-serif;
 
   /* Spacing */
-  --section-gap: 5rem;
+  --section-gap: 2.5rem;
   --container-max: 800px;
 
   /* Transitions */
@@ -63,9 +63,9 @@ a   { color: var(--gold); text-decoration: none; }
 .ornament {
   display: block;
   text-align: center;
-  font-size: 1.6rem;
+  font-size: 1.2rem;
   color: var(--gold);
-  margin: 2rem auto;
+  margin: 0.8rem auto;
   letter-spacing: 0.6em;
   user-select: none;
   opacity: 0.7;
@@ -144,32 +144,52 @@ a   { color: var(--gold); text-decoration: none; }
 
 .hero__scroll {
   position: absolute;
-  bottom: 2.5rem;
+  bottom: 2rem;
   left: 50%;
   transform: translateX(-50%);
   z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.4rem;
-  color: rgba(255,255,255,0.7);
-  font-size: 0.75rem;
-  letter-spacing: 0.15em;
+  gap: 0.5rem;
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.4);
   animation: bounce 2s infinite;
 }
 
+.hero__scroll-circle {
+  width: 48px;
+  height: 48px;
+  border: 2px solid var(--gold-light);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.08);
+  box-shadow: 0 0 18px var(--gold-glow);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
 .hero__scroll svg {
-  width: 20px;
-  height: 20px;
-  stroke: rgba(255,255,255,0.7);
-  stroke-width: 2;
+  width: 22px;
+  height: 22px;
+  stroke: var(--gold-light);
+  stroke-width: 2.5;
   fill: none;
 }
 
 @keyframes bounce {
   0%, 100% { transform: translateX(-50%) translateY(0); }
-  50%      { transform: translateX(-50%) translateY(8px); }
+  50%      { transform: translateX(-50%) translateY(10px); }
+}
+
+@keyframes scrollPulse {
+  0%, 100% { box-shadow: 0 0 18px var(--gold-glow); }
+  50%      { box-shadow: 0 0 30px var(--gold-glow), 0 0 50px rgba(201,168,76,0.15); }
 }
 
 /* ---------- SECTION (agenda item) ---------- */
@@ -188,7 +208,7 @@ a   { color: var(--gold); text-decoration: none; }
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--glass-border);
   border-radius: 1.2rem;
-  padding: 3rem 2.5rem;
+  padding: 2.2rem 2rem;
   box-shadow: 0 8px 40px rgba(201, 168, 76, 0.08),
               0 1.5px 6px rgba(0,0,0,0.04);
   transition: transform 0.4s var(--ease-out), box-shadow 0.4s var(--ease-out);
@@ -274,7 +294,7 @@ a   { color: var(--gold); text-decoration: none; }
 
 /* ---------- PASSWORD GATE ---------- */
 .password-gate {
-  padding: 4rem 0;
+  padding: 2.5rem 0;
   text-align: center;
   position: relative;
 }
@@ -441,7 +461,7 @@ a   { color: var(--gold); text-decoration: none; }
 /* ---------- RESPONSIVE ---------- */
 @media (max-width: 600px) {
   .section__card {
-    padding: 2rem 1.4rem;
+    padding: 1.6rem 1.2rem;
     border-radius: 0.9rem;
   }
 
